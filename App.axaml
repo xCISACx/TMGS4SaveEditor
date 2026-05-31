@@ -36,17 +36,24 @@
         <Color x:Key="ColorHighlightSelected">#d0d952</Color>
         <Color x:Key="ColorHighlightSelectedHover">#adcf3c</Color>
 
-        <Color x:Key="AcceptButtonMain">#f7e460</Color>
-        <Color x:Key="AcceptButtonHover">#d0d952</Color>
-        <Color x:Key="AcceptButtonPressed">#adcf3c</Color>
+        <!--DATE PICKER-->
 
-        <Color x:Key="DismissButtonMain">#f7e460</Color>
-        <Color x:Key="DismissButtonHover">#d0d952</Color>
-        <Color x:Key="DismissButtonPressed">#adcf3c</Color>
+        <Color x:Key="DatePickerHighlight">#ffe7ad</Color>
 
-        <Color x:Key="ArrowButtonMain">#F9B42E</Color>
-        <Color x:Key="ArrowButtonHover">#E3A022</Color>
-        <Color x:Key="ArrowButtonPressed">#C98A17</Color>
+        <Color x:Key="AcceptButtonMain">#ded7ff</Color>
+        <Color x:Key="AcceptButtonHover">#b2bdf6</Color>
+        <Color x:Key="AcceptButtonPressed">#a5b2f7</Color>
+        <Color x:Key="AcceptButtonIcon">#a5b2f7</Color>
+
+        <Color x:Key="DismissButtonMain">#ffd8de</Color>
+        <Color x:Key="DismissButtonHover">#ffb6bd</Color>
+        <Color x:Key="DismissButtonPressed">#ffaaa5</Color>
+        <Color x:Key="DismissButtonIcon">#e76d8c</Color>
+
+        <Color x:Key="ArrowButtonMain">#ffcb6b</Color>
+        <Color x:Key="ArrowButtonHover">#f4b64a</Color>
+        <Color x:Key="ArrowButtonPressed">#edad3c</Color>
+        <Color x:Key="ArrowButtonIcon">#5a3b10</Color>
 
         <SolidColorBrush x:Key="SaveButtonBackgroundMain" Color="{StaticResource ColorSaveMain}"/>
         <SolidColorBrush x:Key="SaveButtonBackgroundHover" Color="{StaticResource ColorSaveHover}"/>
@@ -73,6 +80,13 @@
         <SolidColorBrush x:Key="BrushPrimaryMain" Color="{StaticResource ColorPrimaryMain}"/>
         <SolidColorBrush x:Key="BrushPrimaryHover" Color="{StaticResource ColorPrimaryHover}"/>
         <SolidColorBrush x:Key="BrushPrimaryPressed" Color="{StaticResource ColorPrimaryPressed}"/>
+
+        <SolidColorBrush x:Key="BrushArrowButtonMain" Color="{StaticResource ArrowButtonMain}"/>
+
+        <SolidColorBrush x:Key="BrushAcceptButtonIcon" Color="{StaticResource AcceptButtonIcon}"/>
+        <SolidColorBrush x:Key="BrushDismissButtonIcon" Color="{StaticResource DismissButtonIcon}"/>
+        <SolidColorBrush x:Key="BrushArrowButtonIcon" Color="{StaticResource ArrowButtonIcon}"/>
+
 
         <CornerRadius x:Key="ControlCornerRadius">4</CornerRadius>
         
@@ -169,7 +183,8 @@
         <SolidColorBrush x:Key="DatePickerFlyoutPresenterBackground" Color="{StaticResource ColorWhite}"/>
         <SolidColorBrush x:Key="DatePickerFlyoutPresenterForeground" Color="{StaticResource ColorTextMain}"/>
         <SolidColorBrush x:Key="DatePickerFlyoutPresenterBorderBrush" Color="{StaticResource ColorSecondaryPressed}"/>
-        <SolidColorBrush x:Key="DatePickerFlyoutPresenterHighlightFill" Color="{StaticResource ColorHighlightHover}"/>
+
+        <SolidColorBrush x:Key="DatePickerFlyoutPresenterHighlightFill" Color="{StaticResource DatePickerHighlight}"/>
 
         <SolidColorBrush x:Key="ScrollBarPanningThumbBackground" Color="{StaticResource ColorSecondaryMain}"/>
 
@@ -226,6 +241,9 @@
         <!--LOAD BUTTON-->
 
         <Style Selector="Button.LoadBtn">
+            <Setter Property="FontFamily" Value="{StaticResource ButtonFont}"/>
+            <Setter Property="FontSize" Value="18"/>
+
             <Setter Property="Background" Value="{StaticResource LoadButtonBackgroundMain}"/> 
             <Setter Property="Foreground" Value="{StaticResource BrushWhite}"/>
             <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
@@ -246,6 +264,9 @@
         <!--SAVE BUTTON-->
 
         <Style Selector="Button.SaveBtn">
+            <Setter Property="FontFamily" Value="{StaticResource ButtonFont}"/>
+            <Setter Property="FontSize" Value="18"/>
+
             <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundMain}"/> 
             <Setter Property="Foreground" Value="{StaticResource BrushWhite}"/>
             <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
@@ -316,16 +337,38 @@
         </Style>
 
 
-        <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton:not(:pointerover) > Path,
-                         DatePickerPresenter /template/ Button#PART_AcceptButton:pointerover > Path,
-                         DatePickerPresenter /template/ Button#PART_AcceptButton:pressed > Path">
-            <Setter Property="StrokeThickness" Value="3" />
+        <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton">
+            <Setter Property="Foreground" Value="{StaticResource BrushAcceptButtonIcon}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}">
+                        <Path Data="M 0,5.5 L 4,9.5 L 12,0.5"
+                              Stretch="None"
+                              Stroke="{TemplateBinding Foreground}"
+                              StrokeLineCap="Round"
+                              StrokeThickness="3"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
         </Style>
 
-        <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton:not(:pointerover) > Path,
-                         DatePickerPresenter /template/ Button#PART_DismissButton:pointerover > Path,
-                         DatePickerPresenter /template/ Button#PART_DismissButton:pressed > Path">
-            <Setter Property="StrokeThickness" Value="3" />
+        <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton">
+            <Setter Property="Foreground" Value="{StaticResource BrushDismissButtonIcon}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}">
+                        <Path Data="M 1.5,0.5 L 11.5,10.5 M 11.5,0.5 L 1.5,10.5"
+                              Stretch="None"
+                              Stroke="{TemplateBinding Foreground}"
+                              StrokeLineCap="Round"
+                              StrokeThickness="3"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
         </Style>
 
 
@@ -376,11 +419,50 @@
 
         <!--DATE PICKER UP DOWN BUTTONS-->
 
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton:not(:ispointerover) > Viewbox > Path,
-                        DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton:pointerover > Viewbox > Path,
-                        DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton:pressed > Viewbox > Path">
-            <Setter Property="StrokeThickness" Value="4"/>
+        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton,
+                         DatePickerPresenter /template/ RepeatButton#PART_DayUpButton,
+                         DatePickerPresenter /template/ RepeatButton#PART_YearUpButton">
+            <Setter Property="Background" Value="{StaticResource BrushArrowButtonMain}" />
+            <Setter Property="Foreground" Value="{StaticResource BrushArrowButtonIcon}" />
+            
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}">
+                        <Path Data="M -0.5,7.5 L 5.5,1.5 L 11.5,7.5"
+                              Stretch="None"
+                              Stroke="{TemplateBinding Foreground}"
+                              StrokeLineCap="Round"
+                              StrokeThickness="3"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
         </Style>
+
+        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton,
+                         DatePickerPresenter /template/ RepeatButton#PART_DayDownButton,
+                         DatePickerPresenter /template/ RepeatButton#PART_YearDownButton">
+            <Setter Property="Background" Value="{StaticResource BrushArrowButtonMain}" />
+            <Setter Property="Foreground" Value="{StaticResource BrushArrowButtonIcon}" />
+            
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}">
+                        <Path Data="M -0.5,0.5 L 5.5,6.5 L 11.5,0.5"
+                              Stretch="None"
+                              Stroke="{TemplateBinding Foreground}"
+                              StrokeLineCap="Round"
+                              StrokeThickness="3"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+
+
 
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton:not(:ispointerover)">
             <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
@@ -394,11 +476,7 @@
             <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
         </Style>
 
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton:not(:ispointerover) > Viewbox > Path,
-                        DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton:pointerover > Viewbox > Path,
-                        DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton:pressed > Viewbox > Path">
-            <Setter Property="StrokeThickness" Value="4"/>
-        </Style>
+
 
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton">
             <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
@@ -419,82 +497,89 @@
 
 
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayUpButton">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundMain}"/>
+            <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
         </Style>
 
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayUpButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundHover}"/>
+            <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
         </Style>
 
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayUpButton:pressed">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundPressed}"/>
+            <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
         </Style>
 
-
-
+        
+        
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayDownButton">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundMain}"/>
+            <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
         </Style>
 
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayDownButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundHover}"/>
+            <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
         </Style>
 
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayDownButton:pressed">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundPressed}"/>
+            <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
         </Style>
 
 
 
+      
+
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearUpButton">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundMain}"/>
+            <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
         </Style>
 
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearUpButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundHover}"/>
+            <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
         </Style>
 
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearUpButton:pressed">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundPressed}"/>
+            <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
         </Style>
 
+        
+
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearDownButton">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundMain}"/>
+            <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
         </Style>
 
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearDownButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundHover}"/>
+            <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
         </Style>
 
         <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearDownButton:pressed">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundPressed}"/>
+            <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
         </Style>
+
+
+
 
 
 
         <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton">
-            <Setter Property="Background" Value="{StaticResource ColorHighlightSelectedHover}"/>
+            <Setter Property="Background" Value="{StaticResource AcceptButtonMain}"/>
         </Style>
 
         <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource ColorHighlightSelectedHover}"/>
+            <Setter Property="Background" Value="{StaticResource AcceptButtonHover}"/>
         </Style>
 
         <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton:pressed">
-            <Setter Property="Background" Value="{StaticResource ColorHighlightSelectedHover}"/>
+            <Setter Property="Background" Value="{StaticResource AcceptButtonPressed}"/>
         </Style>
 
 
         <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton">
-            <Setter Property="Background" Value="{StaticResource ColorSecondaryMain}"/>
+            <Setter Property="Background" Value="{StaticResource DismissButtonMain}"/>
         </Style>
 
         <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource ColorSecondaryHover}"/>
+            <Setter Property="Background" Value="{StaticResource DismissButtonHover}"/>
         </Style>
 
         <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton:pressed">
-            <Setter Property="Background" Value="{StaticResource ColorSecondaryPressed}"/>
+            <Setter Property="Background" Value="{StaticResource DismissButtonPressed}"/>
         </Style>
 
         <!--SCROLL BAR THUMB-->

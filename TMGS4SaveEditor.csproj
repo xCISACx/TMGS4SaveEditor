@@ -50,5 +50,8 @@
     <Compile Update="TextControl.axaml.cs">
       <DependentUpon>TextControl.axaml</DependentUpon>
     </Compile>
+    <Compile Update="CheatsWindow.axaml.cs">
+      <DependentUpon>CheatsWindow.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

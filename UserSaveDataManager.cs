@@ -102,7 +102,7 @@ namespace TMGSSaveEditor
             byte[] decrypted = Decrypt(bytes);
             decryptedSave = decrypted;
 
-            File.WriteAllBytes(loadPath + "decl", decryptedSave);
+            //File.WriteAllBytes(loadPath + "decl", decryptedSave);
 
             return loadFromDecryptedBytes(decrypted);
         }
@@ -154,7 +154,7 @@ namespace TMGSSaveEditor
                 Array.Resize(ref saveData, decryptedSave.Length);
             }
 
-            File.WriteAllBytes(savePath + "decs", saveData);
+            //File.WriteAllBytes(savePath + "decs", saveData);
 
             byte[] encryptedData = Encrypt(saveData);
             File.WriteAllBytes(savePath, encryptedData);

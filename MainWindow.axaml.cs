@@ -9,6 +9,7 @@ using MsBox.Avalonia.Enums;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -42,6 +43,8 @@ namespace TMGS4SaveEditor
         public event voidDelegate onReset;
 
         UserSaveDataManager savedata = new UserSaveDataManager();
+
+        private CheatsWindow _cheatsWindowInstance;
 
         public interface ObjectInspector
         {
@@ -316,7 +319,7 @@ Programming:
 Graphic Design:
     - euphonia.exe
 
-Discord: https://discord.gg/nmuDDv2w",
+Discord: https://discord.gg/Kw6mRY96hY",
                 ButtonDefinitions = ButtonEnum.Ok,
 
                 WindowStartupLocation = Avalonia.Controls.WindowStartupLocation.CenterOwner,
@@ -326,6 +329,97 @@ Discord: https://discord.gg/nmuDDv2w",
             });
 
             await box.ShowWindowDialogAsync(this);
+        }
+
+        // Saves the header names from the root down to the selected item
+        private List<string> GetSelectedNodePath()
+        {
+            List<string> path = new List<string>();
+
+            if (TreeView1.SelectedItem is TreeViewItem current)
+            {
+                while (current != null)
+                {
+                    // Insert at the beginning so the list goes from Root -> Leaf
+                    path.Insert(0, current.Header?.ToString() ?? "");
+                    current = current.Parent as TreeViewItem;
+                }
+            }
+
+            return path;
+        }
+
+        // Walks down the newly built tree and expands nodes matching the saved path
+        private void RestoreSelectedNodePath(List<string> path)
+        {
+            if (path == null || path.Count == 0) return;
+
+            ObservableCollection<TreeViewItem> currentLevel = treeItems;
+            TreeViewItem lastNode = null;
+
+            foreach (string step in path)
+            {
+                if (currentLevel == null) break;
+
+                // Find the node in the current level that matches the header name
+                TreeViewItem match = currentLevel.FirstOrDefault(x => x.Header?.ToString() == step);
+
+                if (match != null)
+                {
+                    lastNode = match;
+                    match.IsExpanded = true; // Visually open the folder
+                    processNode(match);      // Force populate its children immediately so the next loop iteration can find them
+
+                    currentLevel = match.ItemsSource as ObservableCollection<TreeViewItem>;
+                }
+                else
+                {
+                    break; // If a name changed or vanished, stop trying to dig deeper
+                }
+            }
+
+            // Finally, highlight the target node
+            if (lastNode != null)
+            {
+                TreeView1.SelectedItem = lastNode;
+                lastNode.BringIntoView(); // Scrolls the TreeView down to the item automatically
+            }
+        }
+
+        public void MarkAsChangedAndRefresh()
+        {
+            hasChanges = true;
+
+            List<string> savedPath = GetSelectedNodePath();
+
+            nodeToObjDict.Clear();
+            onReset?.Invoke();
+            treeItems.Clear();
+
+            TreeViewItem rootNode = CreateNodeWithLoading("Root");
+            processRootNode(rootNode);
+
+            RestoreSelectedNodePath(savedPath);
+        }
+
+        private void ButtonOpenCheats_Click(object sender, RoutedEventArgs e)
+        {
+            if (_cheatsWindowInstance != null && _cheatsWindowInstance.IsVisible)
+            {
+                // Restore window if minimized
+                if (_cheatsWindowInstance.WindowState == WindowState.Minimized)
+                {
+                    _cheatsWindowInstance.WindowState = WindowState.Normal;
+                }
+
+                // Bring window to front
+                _cheatsWindowInstance.Activate();
+                return;
+            }
+
+            // Create and show new instance
+            _cheatsWindowInstance = new CheatsWindow(this);
+            _cheatsWindowInstance.Show(this);
         }
     }
 }

@@ -31,9 +31,11 @@
         
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10" Spacing="10">
     
-            <Button Name="ButtonLoad" Classes="LoadBtn" Content="Load File" Click="ButtonLoad_Click"/>
+            <Button Name="ButtonLoad" Classes="LoadBtn" Content="LOAD FILE" Click="ButtonLoad_Click"/>
     
-            <Button Name="ButtonSave" Classes="SaveBtn" Content="Save File" Click="ButtonSave_Click"/>
+            <Button Name="ButtonSave" Classes="SaveBtn" Content="SAVE FILE" Click="ButtonSave_Click"/>
+
+            <Button Name="ButtonOpenCheats" Classes="LoadBtn" Content="CHEATS MENU" Click="ButtonOpenCheats_Click"/>
 
         </StackPanel>
 
