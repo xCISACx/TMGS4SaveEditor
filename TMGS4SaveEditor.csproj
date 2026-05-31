@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+	<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+	<ApplicationIcon>Assets\icon4.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Assets\character.png" />
+    <None Remove="Assets\Fonts\DF-ChuButoMaruGothic-W7.ttf" />
+    <None Remove="Assets\Fonts\DF-FutoMaruGothic-W9.ttf" />
+    <None Remove="Assets\icon1.ico" />
+    <None Remove="Assets\icon4.ico" />
+    <None Remove="Assets\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\character.png" />
+    <AvaloniaResource Include="Assets\Fonts\DF-ChuButoMaruGothic-W7.ttf" />
+    <AvaloniaResource Include="Assets\Fonts\DF-FutoMaruGothic-W9.ttf" />
+    <AvaloniaResource Include="Assets\icon1.ico" />
+    <AvaloniaResource Include="Assets\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="12.0.3" />
+    <PackageReference Include="Avalonia.Desktop" Version="12.0.3" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.3" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.3" />
+    <PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1">
+      <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+      <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="MessageBox.Avalonia" Version="12.0.0" />
+    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="10.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="BooleanControl.axaml.cs">
+      <DependentUpon>BooleanControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="DateControl.axaml.cs">
+      <DependentUpon>DateControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="EnumControl.axaml.cs">
+      <DependentUpon>EnumControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="TextControl.axaml.cs">
+      <DependentUpon>TextControl.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

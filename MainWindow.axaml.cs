@@ -1,0 +1,331 @@
+using Avalonia.Controls;
+using Avalonia.Interactivity;
+using Avalonia.Media;
+using Avalonia.Platform.Storage;
+using GS4;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Dto;
+using MsBox.Avalonia.Enums;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+using TMGSSaveEditor;
+
+namespace TMGS4SaveEditor
+{
+    public partial class MainWindow : Window
+    {
+        public Object data;
+
+        bool hasLoaded => data != null;
+        bool hasChanges;
+
+        public class ObjectInfo
+        {
+            public Object obj;
+            public Object parentObj;
+            public FieldInfo fieldInfo;
+            public int arrIndex;
+            public TreeViewItem treeNode;
+        }
+
+        Dictionary<TreeViewItem, ObjectInfo> nodeToObjDict = new Dictionary<TreeViewItem, ObjectInfo>();
+        ObservableCollection<TreeViewItem> treeItems = new ObservableCollection<TreeViewItem>();
+
+        public delegate void objectInfoDelegate(ObjectInfo objInfo);
+        public delegate void voidDelegate();
+
+        public event objectInfoDelegate onHandleObject;
+        public event voidDelegate onReset;
+
+        UserSaveDataManager savedata = new UserSaveDataManager();
+
+        public interface ObjectInspector
+        {
+            void registerParent(MainWindow form);
+        }
+
+        private TreeViewItem CreateNodeWithLoading(string text)
+        {
+            TreeViewItem node = new TreeViewItem { Header = text };
+            node.ItemsSource = new ObservableCollection<TreeViewItem> { new TreeViewItem { Header = "loading" } };
+            return node;
+        }
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            TreeView1.ItemsSource = treeItems;
+            TreeView1.AddHandler(TreeViewItem.ExpandedEvent, TreeViewItem_Expanded);
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the new Avalonia UserControls
+            List<UserControl> a = new List<UserControl> {
+             new BooleanControl(),
+             new TextControl(),
+             new EnumControl(),
+             new DateControl(),
+    };
+
+            foreach (UserControl x in a)
+            {
+                // Add them to the empty panel on the right side of the screen
+                PanelEditors.Children.Add(x);
+
+                // Hide them by default
+                x.IsVisible = false;
+
+                // Register the events
+                if (x is ObjectInspector inspector)
+                {
+                    inspector.registerParent(this);
+                }
+            }
+        }
+
+        private async void ButtonLoad_Click(object sender, RoutedEventArgs e)
+        {
+            if (hasChanges)
+            {
+                // Requires MsBox.Avalonia NuGet package for MessageBox functionality, 
+                // or a custom dialog implementation.
+                // var result = await MessageBoxManager.GetMessageBoxStandard("Load anyway?", "File has been modified. Load anyway?", ButtonEnum.YesNo, Icon.Warning).ShowAsync();
+                // if (result != ButtonResult.Yes) return;
+            }
+
+            var topLevel = TopLevel.GetTopLevel(this);
+            var files = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+            {
+                Title = "Open Save File",
+                AllowMultiple = false
+            });
+
+            if (files.Count == 0)
+            {
+                return;
+            }
+
+            string path = files[0].Path.LocalPath;
+
+            data = savedata.Load(path);
+
+            nodeToObjDict.Clear();
+            onReset?.Invoke();
+            treeItems.Clear();
+
+            TreeViewItem rootNode = CreateNodeWithLoading("Root");
+            processRootNode(rootNode);
+        }
+
+        void saveTypeNode(TreeViewItem node, Object o, Object parentObj, FieldInfo fieldInfo, int arrIndex = -1)
+        {
+            nodeToObjDict[node] = new ObjectInfo
+            {
+                obj = o,
+                parentObj = parentObj,
+                fieldInfo = fieldInfo,
+                arrIndex = arrIndex,
+                treeNode = node,
+            };
+        }
+
+        private void TreeViewItem_Expanded(object sender, RoutedEventArgs e)
+        {
+            // In Avalonia, e.Source tells us exactly which node was expanded
+            if (e.Source is TreeViewItem node)
+            {
+                processNode(node);
+            }
+        }
+
+        void processRootNode(TreeViewItem node)
+        {
+            if (data == null) return;
+            Type rootType = data.GetType();
+
+            node.Header = rootType.Name;
+            treeItems.Add(node);
+
+            saveTypeNode(node, data, data, rootType.GetFields().First());
+        }
+
+        void processNode(TreeViewItem parent)
+        {
+            if (!nodeToObjDict.ContainsKey(parent)) return;
+
+            ObjectInfo objInfo = nodeToObjDict[parent];
+            Object o = objInfo.obj;
+            if (o == null) return;
+            Type t = o.GetType();
+
+            // Grab the children collection attached to this parent
+            ObservableCollection<TreeViewItem> childCollection = parent.ItemsSource as ObservableCollection<TreeViewItem>;
+            if (childCollection == null)
+            {
+                childCollection = new ObservableCollection<TreeViewItem>();
+                parent.ItemsSource = childCollection;
+            }
+
+            // Clear previous items or the "loading" dummy node
+            childCollection.Clear();
+
+            if (t.BaseType == typeof(Array))
+            {
+                Array arrayOfItems = (Array)o;
+                int i = 0;
+                foreach (var item in arrayOfItems)
+                {
+                    if (item == null) continue;
+                    Type itemType = item.GetType();
+
+                    string name;
+                    TreeViewItem node;
+                    if (itemType.BaseType == typeof(Enum) || itemType.Namespace != "GS4")
+                    {
+                        name = String.Format("[{0}] {1}: {2}", i, itemType.Name, item.ToString());
+                        node = new TreeViewItem { Header = name };
+                    }
+                    else
+                    {
+                        name = String.Format("[{0}] {1}", i, itemType.Name);
+                        node = CreateNodeWithLoading(name);
+                    }
+
+                    childCollection.Add(node);
+                    saveTypeNode(node, item, o, objInfo.fieldInfo, i);
+                    i++;
+                }
+                return;
+            }
+
+            foreach (FieldInfo x in t.GetFields())
+            {
+                Type childType = x.FieldType;
+                Object childObject = x.GetValue(o);
+                TreeViewItem childNode;
+
+                if (childObject == null)
+                {
+                    childNode = new TreeViewItem { Header = String.Format("{0}: null", x.Name) };
+                }
+                else if (childType.Namespace != "GS4" && childType.BaseType?.Name != "Array" || childType.BaseType == typeof(Enum))
+                {
+                    childNode = new TreeViewItem { Header = String.Format("{0}: {1}", x.Name, childObject.ToString()) };
+                }
+                else
+                {
+                    childNode = CreateNodeWithLoading(x.Name);
+                }
+
+                childCollection.Add(childNode);
+                saveTypeNode(childNode, childObject, o, x);
+            }
+        }
+
+        private void TreeView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (TreeView1.SelectedItem is not TreeViewItem node) return;
+
+            onReset?.Invoke();
+
+            // Prevent opening editors if this node has children/is an expandable category
+            ObservableCollection<TreeViewItem> children = node.ItemsSource as ObservableCollection<TreeViewItem>;
+            if (children != null && children.Count > 0 && children[0].Header?.ToString() != "loading")
+            {
+                return;
+            }
+
+            if (nodeToObjDict.TryGetValue(node, out ObjectInfo o))
+            {
+                onHandleObject?.Invoke(o);
+            }
+        }
+
+        public void setObject(ObjectInfo objInfo, Object newObject)
+        {
+            if (TreeView1.SelectedItem is not TreeViewItem selected) return;
+
+            FieldInfo selectedFieldInfo = nodeToObjDict[selected].fieldInfo;
+
+            if (objInfo.arrIndex != -1)
+            {
+                Array a = (Array)objInfo.parentObj;
+                a.SetValue(newObject, objInfo.arrIndex);
+            }
+            else
+            {
+                objInfo.fieldInfo.SetValue(objInfo.parentObj, newObject);
+            }
+
+            if (objInfo.treeNode.Parent is TreeViewItem parentNode)
+            {
+                processNode(parentNode);
+            }
+
+            var fieldInfos = (from x in nodeToObjDict where x.Value.fieldInfo == selectedFieldInfo && x.Value.arrIndex == nodeToObjDict[selected].arrIndex select x.Value).ToArray();
+
+            if (fieldInfos.Length > 0)
+            {
+                ObjectInfo updatedObjToEdit = fieldInfos.Last();
+                TreeView1.SelectedItem = updatedObjToEdit.treeNode;
+                TreeView1.Focus();
+            }
+
+            hasChanges = true;
+        }
+
+        private async void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (!hasLoaded)
+            {
+                return;
+            }
+
+            var topLevel = TopLevel.GetTopLevel(this);
+            var file = await topLevel.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
+            {
+                Title = "Save TMGS File",
+                DefaultExtension = "*.*"
+            });
+
+            if (file != null)
+            {
+                string path = file.Path.LocalPath;
+                savedata.Save(path, data);
+                hasChanges = false;
+            }
+        }
+
+        private async void PictureBoxCharacter_PointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)
+        {
+            var box = MessageBoxManager.GetMessageBoxStandard(new MessageBoxStandardParams
+            {
+                ContentTitle = "TMGS 4 Save Editor",
+                ContentMessage = @"          --- Credits ---
+
+Programming:
+    - PlasmaGrass
+    - CISAC
+
+Graphic Design:
+    - euphonia.exe
+
+Discord: https://discord.gg/nmuDDv2w",
+                ButtonDefinitions = ButtonEnum.Ok,
+
+                WindowStartupLocation = Avalonia.Controls.WindowStartupLocation.CenterOwner,
+
+                // Force the message box to use your exact embedded font path
+                FontFamily = new FontFamily("avares://TMGS4SaveEditor/Assets/Fonts/DF-ChuButoMaruGothic-W7.ttf#DFMaruGothic-Bd")
+            });
+
+            await box.ShowWindowDialogAsync(this);
+        }
+    }
+}
