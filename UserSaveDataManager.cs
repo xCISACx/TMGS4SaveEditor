@@ -9,16 +9,48 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using TMGS4SaveEditor;
+using TMGSSaveEditor.Core;
 
 namespace TMGSSaveEditor
 {
-    public class UserSaveDataManager
+    public class UserSaveDataManager : ISaveDataManager
     {
         string password = "wZ3jKy6WQ5qD4u7z";
 
         string salt = "uV4MpbvWd";
         
         RijndaelManaged rijndael;
+
+        public string[] ApproachCharacterNames => new string[]
+        {
+            "Kazama", "Sassa", "Honda", "Nanatsumori", "Hiiragi", "Himuro", "Mikage", "Daichi"
+        };
+
+        public string[] FriendCharacterNames => new string[]
+        {
+            "Michiru", "Hikaru"
+        };
+
+        public string[] AdvCharacterNames => new string[]
+        {
+            "Kuya", "Tomoe", "Onari"
+        };
+
+        public string[] ParameterNames => new string[]
+        {
+            "Intelligence",
+            "Art",
+            "Exercise",
+            "Social",
+            "Fashion",
+            "Charm",
+            "Stress",
+            "Cash"
+        };
+
+        private ClothesManager _clothesManager = new ClothesManager(typeof(UserSaveDataManager).Assembly.GetName().Name);
+        public string[] ClothingNames => _clothesManager.GetClothingNames();
 
         public UserSaveDataManager()
         {
@@ -102,7 +134,9 @@ namespace TMGSSaveEditor
             byte[] decrypted = Decrypt(bytes);
             decryptedSave = decrypted;
 
-            //File.WriteAllBytes(loadPath + "decl", decryptedSave);
+#if DEBUG
+            File.WriteAllBytes(loadPath + "decl", decryptedSave);
+#endif
 
             return loadFromDecryptedBytes(decrypted);
         }
@@ -154,7 +188,9 @@ namespace TMGSSaveEditor
                 Array.Resize(ref saveData, decryptedSave.Length);
             }
 
-            //File.WriteAllBytes(savePath + "decs", saveData);
+#if DEBUG
+            File.WriteAllBytes(savePath + "decs", saveData);
+#endif
 
             byte[] encryptedData = Encrypt(saveData);
             File.WriteAllBytes(savePath, encryptedData);

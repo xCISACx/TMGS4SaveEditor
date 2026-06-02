@@ -1,11 +1,14 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using TMGSSaveEditor;
 
 namespace TMGS4SaveEditor
 {
     public partial class App : Application
     {
+        string projectName = "TMGS4SaveEditor";
+        string windowTitle = "TMGS4 Save Editor";
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
@@ -16,7 +19,9 @@ namespace TMGS4SaveEditor
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new MainWindow();
+                var tmgsManager = new UserSaveDataManager();
+
+                desktop.MainWindow = new TMGSSaveEditor.Core.MainWindow(tmgsManager, projectName, windowTitle);
             }
 
             base.OnFrameworkInitializationCompleted();

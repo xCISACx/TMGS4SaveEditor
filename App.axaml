@@ -4,603 +4,74 @@
              RequestedThemeVariant="Default">
 
     <Application.Resources>
+        <ResourceDictionary>
 
-        <Color x:Key="ColorTextMain">#333333</Color>
-        <Color x:Key="ColorTextDark">#111111</Color>
-        <Color x:Key="ColorWhite">#FFFFFF</Color>
-        <Color x:Key="ColorAppBackground">#fff3ce</Color>
-        
-        <Color x:Key="ColorControlBgHover">#FAFAFA</Color>
-        <Color x:Key="ColorControlBgPressed">#E8E8E8</Color>
-        <Color x:Key="ColorControlBorderMain">#D3D3D3</Color>
-        <Color x:Key="ColorControlBorderHover">#B0B0B0</Color>
-        <Color x:Key="ColorControlBorderPressed">#909090</Color>
+            <Color x:Key="ColorTextMain">#333333</Color>
+            <Color x:Key="ColorTextDark">#111111</Color>
+            <Color x:Key="ColorWhite">#FFFFFF</Color>
+            <Color x:Key="ColorAppBackground">#fff3ce</Color>
+            <Color x:Key="ColorAppTextOnBackground">#846438</Color>
 
-        <Color x:Key="ColorLoadMain">#ef8fb9</Color>
-        <Color x:Key="ColorLoadHover">#e76d8c</Color>
-        <Color x:Key="ColorLoadPressed">#dd5276</Color>
+            <Color x:Key="ColorControlBgHover">#FAFAFA</Color>
+            <Color x:Key="ColorControlBgPressed">#E8E8E8</Color>
+            <Color x:Key="ColorControlBorderMain">#D3D3D3</Color>
+            <Color x:Key="ColorControlBorderHover">#B0B0B0</Color>
+            <Color x:Key="ColorControlBorderPressed">#909090</Color>
 
-        <Color x:Key="ColorSaveMain">#f18714</Color>
-        <Color x:Key="ColorSaveHover">#eb611d</Color>
-        <Color x:Key="ColorSavePressed">#e34d12</Color>
+            <Color x:Key="ColorLoadMain">#ef8fb9</Color>
+            <Color x:Key="ColorLoadHover">#e76d8c</Color>
+            <Color x:Key="ColorLoadPressed">#dd5276</Color>
 
-        <Color x:Key="ColorPrimaryMain">#ef8fb9</Color>
-        <Color x:Key="ColorPrimaryHover">#e76d8c</Color>
-        <Color x:Key="ColorPrimaryPressed">#dd5276</Color>
+            <Color x:Key="ColorSaveMain">#f18714</Color>
+            <Color x:Key="ColorSaveHover">#eb611d</Color>
+            <Color x:Key="ColorSavePressed">#e34d12</Color>
 
-        <Color x:Key="ColorSecondaryMain">#f18714</Color>
-        <Color x:Key="ColorSecondaryHover">#eb611d</Color>
-        <Color x:Key="ColorSecondaryPressed">#e34d12</Color>
+            <Color x:Key="ColorPrimaryMain">#ef8fb9</Color>
+            <Color x:Key="ColorPrimaryHover">#e76d8c</Color>
+            <Color x:Key="ColorPrimaryPressed">#dd5276</Color>
 
-        <Color x:Key="ColorHighlightHover">#f7e460</Color>
-        <Color x:Key="ColorHighlightSelected">#d0d952</Color>
-        <Color x:Key="ColorHighlightSelectedHover">#adcf3c</Color>
+            <Color x:Key="ColorSecondaryMain">#f18714</Color>
+            <Color x:Key="ColorSecondaryHover">#eb611d</Color>
+            <Color x:Key="ColorSecondaryPressed">#e34d12</Color>
 
-        <!--DATE PICKER-->
+            <Color x:Key="ColorHighlightHover">#f7e460</Color>
+            <Color x:Key="ColorHighlightSelected">#d0d952</Color>
+            <Color x:Key="ColorHighlightSelectedHover">#adcf3c</Color>
 
-        <Color x:Key="DatePickerHighlight">#ffe7ad</Color>
+            <Color x:Key="ColorBorderMain">#f18714</Color>
+            <Color x:Key="ColorBorderHover">#eb611d</Color>
+            <Color x:Key="ColorBorderPressed">#e34d12</Color>
 
-        <Color x:Key="AcceptButtonMain">#ded7ff</Color>
-        <Color x:Key="AcceptButtonHover">#b2bdf6</Color>
-        <Color x:Key="AcceptButtonPressed">#a5b2f7</Color>
-        <Color x:Key="AcceptButtonIcon">#a5b2f7</Color>
+            <Color x:Key="ColorLink">#eb611d</Color>
 
-        <Color x:Key="DismissButtonMain">#ffd8de</Color>
-        <Color x:Key="DismissButtonHover">#ffb6bd</Color>
-        <Color x:Key="DismissButtonPressed">#ffaaa5</Color>
-        <Color x:Key="DismissButtonIcon">#e76d8c</Color>
+            <!--DATE PICKER-->
 
-        <Color x:Key="ArrowButtonMain">#ffcb6b</Color>
-        <Color x:Key="ArrowButtonHover">#f4b64a</Color>
-        <Color x:Key="ArrowButtonPressed">#edad3c</Color>
-        <Color x:Key="ArrowButtonIcon">#5a3b10</Color>
+            <Color x:Key="DatePickerHighlight">#ffe7ad</Color>
 
-        <SolidColorBrush x:Key="SaveButtonBackgroundMain" Color="{StaticResource ColorSaveMain}"/>
-        <SolidColorBrush x:Key="SaveButtonBackgroundHover" Color="{StaticResource ColorSaveHover}"/>
-        <SolidColorBrush x:Key="SaveButtonBackgroundPressed" Color="{StaticResource ColorSavePressed}"/>
+            <Color x:Key="AcceptButtonMain">#ded7ff</Color>
+            <Color x:Key="AcceptButtonHover">#b2bdf6</Color>
+            <Color x:Key="AcceptButtonPressed">#a5b2f7</Color>
+            <Color x:Key="AcceptButtonIcon">#8491da</Color>
 
-        <SolidColorBrush x:Key="LoadButtonBackgroundMain" Color="{StaticResource ColorLoadMain}"/>
-        <SolidColorBrush x:Key="LoadButtonBackgroundHover" Color="{StaticResource ColorLoadHover}"/>
-        <SolidColorBrush x:Key="LoadButtonBackgroundPressed" Color="{StaticResource ColorLoadPressed}"/>
+            <Color x:Key="DismissButtonMain">#ffd8de</Color>
+            <Color x:Key="DismissButtonHover">#ffb6bd</Color>
+            <Color x:Key="DismissButtonPressed">#ffaaa5</Color>
+            <Color x:Key="DismissButtonIcon">#e76d8c</Color>
 
-        <SolidColorBrush x:Key="BrushTextMain" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="BrushTextDark" Color="{StaticResource ColorTextDark}"/>
-        <SolidColorBrush x:Key="BrushWhite" Color="{StaticResource ColorWhite}"/>
+            <Color x:Key="ArrowButtonMain">#ffcb6b</Color>
+            <Color x:Key="ArrowButtonHover">#f4b64a</Color>
+            <Color x:Key="ArrowButtonPressed">#edad3c</Color>
+            <Color x:Key="ArrowButtonIcon">#846438</Color>
 
-        <SolidColorBrush x:Key="BrushControlBgHover" Color="{StaticResource ColorControlBgHover}"/>
-        <SolidColorBrush x:Key="BrushControlBgPressed" Color="{StaticResource ColorControlBgPressed}"/>
-        <SolidColorBrush x:Key="BrushControlBorderMain" Color="{StaticResource ColorControlBorderMain}"/>
-        <SolidColorBrush x:Key="BrushControlBorderHover" Color="{StaticResource ColorControlBorderHover}"/>
-        <SolidColorBrush x:Key="BrushControlBorderPressed" Color="{StaticResource ColorControlBorderPressed}"/>
-        
-        <SolidColorBrush x:Key="BrushSecondaryMain" Color="{StaticResource ColorSecondaryMain}"/>
-        <SolidColorBrush x:Key="BrushSecondaryHover" Color="{StaticResource ColorSecondaryHover}"/>
-        <SolidColorBrush x:Key="BrushSecondaryPressed" Color="{StaticResource ColorSecondaryPressed}"/>
-        
-        <SolidColorBrush x:Key="BrushPrimaryMain" Color="{StaticResource ColorPrimaryMain}"/>
-        <SolidColorBrush x:Key="BrushPrimaryHover" Color="{StaticResource ColorPrimaryHover}"/>
-        <SolidColorBrush x:Key="BrushPrimaryPressed" Color="{StaticResource ColorPrimaryPressed}"/>
-
-        <SolidColorBrush x:Key="BrushArrowButtonMain" Color="{StaticResource ArrowButtonMain}"/>
-
-        <SolidColorBrush x:Key="BrushAcceptButtonIcon" Color="{StaticResource AcceptButtonIcon}"/>
-        <SolidColorBrush x:Key="BrushDismissButtonIcon" Color="{StaticResource DismissButtonIcon}"/>
-        <SolidColorBrush x:Key="BrushArrowButtonIcon" Color="{StaticResource ArrowButtonIcon}"/>
-
-
-        <CornerRadius x:Key="ControlCornerRadius">4</CornerRadius>
-        
-        <FontFamily x:Key="MainTextFont">avares://TMGS4SaveEditor/Assets/Fonts/DF-ChuButoMaruGothic-W7.ttf#DFMaruGothic-Bd</FontFamily>
-        <FontFamily x:Key="ButtonFont">avares://TMGS4SaveEditor/Assets/Fonts/DF-FutoMaruGothic-W9.ttf#DFMaruGothic-SB</FontFamily>
-
-        <SolidColorBrush x:Key="ThemeTextColor" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="SystemRegionBrush" Color="{StaticResource ColorAppBackground}"/>
-
-        <SolidColorBrush x:Key="TreeViewItemBackgroundPointerOver" Color="{StaticResource ColorHighlightHover}"/>
-        <SolidColorBrush x:Key="TreeViewItemBackgroundSelected" Color="{StaticResource ColorHighlightSelected}"/>
-        <SolidColorBrush x:Key="TreeViewItemBackgroundSelectedPointerOver" Color="{StaticResource ColorHighlightSelectedHover}"/>
-        <SolidColorBrush x:Key="TreeViewItemForeground" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="TreeViewItemForegroundPointerOver" Color="{StaticResource ColorTextDark}"/>
-        <SolidColorBrush x:Key="TreeViewItemForegroundPressed" Color="{StaticResource ColorTextDark}"/>
-
-        <SolidColorBrush x:Key="TextControlBackground" Color="{StaticResource ColorWhite}"/>
-        <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="{StaticResource ColorControlBgHover}"/>
-        <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="{StaticResource ColorWhite}"/>
-        <SolidColorBrush x:Key="TextControlForeground" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="TextControlForegroundFocused" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="TextControlBorderBrush" Color="{StaticResource ColorSecondaryPressed}"/>
-        <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="{StaticResource ColorSecondaryPressed}"/>
-        <SolidColorBrush x:Key="TextControlBorderBrushPressed" Color="{StaticResource ColorSecondaryPressed}"/>
-
-        <SolidColorBrush x:Key="CheckBoxForeground" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="CheckBoxForegroundPointerOver" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="CheckBoxForegroundPressed" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="CheckBoxForegroundChecked" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="CheckBoxForegroundCheckedPointerOver" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="CheckBoxForegroundCheckedPressed" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="CheckBoxForegroundUnchecked" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="CheckBoxForegroundUncheckedPointerOver" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="CheckBoxForegroundUncheckedPressed" Color="{StaticResource ColorTextMain}"/>
-
-        <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUnchecked" Color="{StaticResource ColorWhite}"/>
-        <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedPointerOver" Color="{StaticResource ColorControlBgHover}"/>
-        <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedPressed" Color="{StaticResource ColorControlBgPressed}"/>
-
-        <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUnchecked" Color="{StaticResource ColorControlBorderMain}"/>
-        <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPointerOver" Color="{StaticResource ColorControlBorderHover}"/>
-        <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPressed" Color="{StaticResource ColorControlBorderPressed}"/>
-
-        <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillChecked" Color="{StaticResource ColorSecondaryMain}"/>
-        <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" Color="{StaticResource ColorSecondaryHover}"/>
-        <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="{StaticResource ColorSecondaryPressed}"/>
-
-        <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeChecked" Color="{StaticResource ColorSecondaryMain}"/>
-        <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" Color="{StaticResource ColorSecondaryHover}"/>
-        <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="{StaticResource ColorSecondaryPressed}"/>
-
-        <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundChecked" Color="{StaticResource ColorWhite}"/>
-        <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPointerOver" Color="{StaticResource ColorWhite}"/>
-        <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPressed" Color="{StaticResource ColorWhite}"/>
-
-        <SolidColorBrush x:Key="ComboBoxDropDownGlyphForeground" Color="{StaticResource ColorTextMain}"/>
-        
-        <SolidColorBrush x:Key="ComboBoxBackground" Color="{StaticResource ColorWhite}"/>
-        <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="{StaticResource ColorControlBgHover}"/>
-        <SolidColorBrush x:Key="ComboBoxBackgroundPressed" Color="{StaticResource ColorControlBgPressed}"/>
-
-        <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="{StaticResource ColorSecondaryMain}"/>
-        <SolidColorBrush x:Key="ComboBoxBorderBrushPointerOver" Color="{StaticResource ColorSecondaryHover}"/>
-        <SolidColorBrush x:Key="ComboBoxBorderBrushPressed" Color="{StaticResource ColorSecondaryPressed}"/>
-
-        <SolidColorBrush x:Key="ComboBoxForeground" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="ComboBoxForegroundPointerOver" Color="{StaticResource ColorTextDark}"/>
-        <SolidColorBrush x:Key="ComboBoxForegroundSelected" Color="{StaticResource ColorTextDark}"/>
-        <SolidColorBrush x:Key="ComboBoxForegroundSelectedPointerOver" Color="{StaticResource ColorTextDark}"/>
-        <SolidColorBrush x:Key="ComboBoxForegroundPressed" Color="{StaticResource ColorTextDark}"/>
-
-        <SolidColorBrush x:Key="ComboBoxDropDownBackground" Color="{StaticResource ColorWhite}"/>
-        <SolidColorBrush x:Key="ComboBoxDropDownBorderBrush" Color="{StaticResource ColorSecondaryPressed}"/>
-
-        <SolidColorBrush x:Key="ComboBoxDropDownForeground" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="ComboBoxDropDownForegroundPointerOver" Color="{StaticResource ColorTextDark}"/>
-        <SolidColorBrush x:Key="ComboBoxDropDownForegroundSelected" Color="{StaticResource ColorTextDark}"/>
-        <SolidColorBrush x:Key="ComboBoxDropDownForegroundSelectedPointerOver" Color="{StaticResource ColorTextDark}"/>
-        <SolidColorBrush x:Key="ComboBoxDropDownForegroundPressed" Color="{StaticResource ColorTextDark}"/>
-
-        <SolidColorBrush x:Key="ComboBoxItemForeground" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="ComboBoxItemForegroundPointerOver" Color="{StaticResource ColorTextDark}"/>
-        <SolidColorBrush x:Key="ComboBoxItemForegroundSelected" Color="{StaticResource ColorTextDark}"/>
-        <SolidColorBrush x:Key="ComboBoxItemForegroundSelectedPointerOver" Color="{StaticResource ColorTextDark}"/>
-        <SolidColorBrush x:Key="ComboBoxItemForegroundPressed" Color="{StaticResource ColorTextDark}"/>
-
-        <SolidColorBrush x:Key="ComboBoxItemBackgroundPointerOver" Color="{StaticResource ColorHighlightHover}"/>
-        <SolidColorBrush x:Key="ComboBoxItemBackgroundSelected" Color="{StaticResource ColorHighlightSelected}"/>
-        <SolidColorBrush x:Key="ComboBoxItemBackgroundSelectedPointerOver" Color="{StaticResource ColorHighlightSelectedHover}"/>
-
-        <SolidColorBrush x:Key="DatePickerSpacerFill" Color="{StaticResource ColorSecondaryMain}"/>
-        <SolidColorBrush x:Key="DatePickerFlyoutPresenterSpacerFill" Color="{StaticResource ColorSecondaryMain}"/>
-        <SolidColorBrush x:Key="DatePickerFlyoutPresenterBackground" Color="{StaticResource ColorWhite}"/>
-        <SolidColorBrush x:Key="DatePickerFlyoutPresenterForeground" Color="{StaticResource ColorTextMain}"/>
-        <SolidColorBrush x:Key="DatePickerFlyoutPresenterBorderBrush" Color="{StaticResource ColorSecondaryPressed}"/>
-
-        <SolidColorBrush x:Key="DatePickerFlyoutPresenterHighlightFill" Color="{StaticResource DatePickerHighlight}"/>
-
-        <SolidColorBrush x:Key="ScrollBarPanningThumbBackground" Color="{StaticResource ColorSecondaryMain}"/>
-
-        <SolidColorBrush x:Key="ScrollBarThumbFill" Color="{StaticResource ColorSecondaryMain}" />
-        <SolidColorBrush x:Key="ScrollBarThumbFillPointerOver" Color="{StaticResource ColorSecondaryHover}" />
-        <SolidColorBrush x:Key="ScrollBarThumbFillPressed" Color="{StaticResource ColorSecondaryPressed}" />
-
-        <SolidColorBrush x:Key="ScrollBarsSeparatorBackground" Color="#40FFFFFF" />
-
-        <SolidColorBrush x:Key="ScrollBarTrackFill" Color="#40FFFFFF" />
-        <SolidColorBrush x:Key="ScrollBarTrackFillPointerOver" Color="#40FFFFFF" />
-        <SolidColorBrush x:Key="ScrollBarTrackFillPressed" Color="#40FFFFFF" />
-        
-        <SolidColorBrush x:Key="ScrollBarTrackStroke" Color="Transparent" />
-        <SolidColorBrush x:Key="ScrollBarTrackStrokePointerOver" Color="Transparent" />
-
-        <SolidColorBrush x:Key="ScrollViewerScrollBarsSeparatorBackground" Color="Transparent" />
-
-        
-        
-
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://TMGSSaveEditor.Core/ThemeMappings.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 
     <Application.Styles>
         <FluentTheme DensityStyle="Compact" />
 
-        <Style Selector="Window">
-            <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
-
-        <!--MESSAGE BOX BUTTON-->
-
-        <Style Selector="Button#OkButton">
-            <Setter Property="FontFamily" Value="{StaticResource ButtonFont}"/>
-            <Setter Property="FontSize" Value="18"/>
-        
-            <Setter Property="Foreground" Value="{StaticResource BrushWhite}"/>
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundMain}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource SaveButtonBackgroundMain}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-        </Style>
-
-        <Style Selector="Button#OkButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundHover}"/>
-            <Setter Property="TextBlock.Foreground" Value="{StaticResource BrushWhite}"/>
-        </Style>
-
-        <Style Selector="Button#OkButton:pressed /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundPressed}"/>
-            <Setter Property="TextBlock.Foreground" Value="{StaticResource BrushWhite}"/>
-        </Style>
-
-        <!--LOAD BUTTON-->
-
-        <Style Selector="Button.LoadBtn">
-            <Setter Property="FontFamily" Value="{StaticResource ButtonFont}"/>
-            <Setter Property="FontSize" Value="18"/>
-
-            <Setter Property="Background" Value="{StaticResource LoadButtonBackgroundMain}"/> 
-            <Setter Property="Foreground" Value="{StaticResource BrushWhite}"/>
-            <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
-            <Setter Property="Padding" Value="15,8"/>
-            <Setter Property="MinHeight" Value="36"/>
-        </Style>
-
-        <Style Selector="Button.LoadBtn:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{StaticResource LoadButtonBackgroundHover}"/> 
-            <Setter Property="TextBlock.Foreground" Value="{StaticResource BrushWhite}"/>
-        </Style>
-
-        <Style Selector="Button.LoadBtn:pressed /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{StaticResource LoadButtonBackgroundPressed}"/> 
-            <Setter Property="TextBlock.Foreground" Value="{StaticResource BrushWhite}"/>
-        </Style>
-
-        <!--SAVE BUTTON-->
-
-        <Style Selector="Button.SaveBtn">
-            <Setter Property="FontFamily" Value="{StaticResource ButtonFont}"/>
-            <Setter Property="FontSize" Value="18"/>
-
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundMain}"/> 
-            <Setter Property="Foreground" Value="{StaticResource BrushWhite}"/>
-            <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
-            <Setter Property="Padding" Value="15,8"/>
-            <Setter Property="MinHeight" Value="36"/>
-        </Style>
-
-        <Style Selector="Button.SaveBtn:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundHover}"/> 
-            <Setter Property="TextBlock.Foreground" Value="{StaticResource BrushWhite}"/>
-        </Style>
-
-        <Style Selector="Button.SaveBtn:pressed /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundPressed}"/> 
-            <Setter Property="TextBlock.Foreground" Value="{StaticResource BrushWhite}"/>
-        </Style>
-
-        <!--TEXT BOX-->
-
-        <Style Selector="TextBox">
-            <Setter Property="FontFamily" Value="{StaticResource MainTextFont}" />
-        </Style>
-
-        <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
-            <Setter Property="BorderBrush" Value="{StaticResource BrushSecondaryMain}" />
-            
-            <Setter Property="BorderThickness" Value="2" />
-        </Style>
-
-        <!--COMBO BOX-->
-
-        <Style Selector="ComboBox:pointerover /template/ ContentControl#ContentPresenter,
-                         ComboBox:pressed /template/ ContentControl#ContentPresenter,
-                         ComboBox:dropdownopen /template/ ContentControl#ContentPresenter,
-                         ComboBox:focus /template/ ContentControl#ContentPresenter,
-                         ComboBox:focus-within /template/ ContentControl#ContentPresenter">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-        </Style>
-
-        <!--DATE PICKER-->
-
-        <Style Selector="DatePicker">
-            <Setter Property="Background" Value="{StaticResource BrushWhite}"/>
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource BrushSecondaryMain}"/>
-        </Style>
-
-        <Style Selector="DatePicker:pointerover">
-            <Setter Property="Background" Value="{StaticResource BrushControlBgHover}"/>
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource BrushSecondaryMain}"/>
-        </Style>
-
-        <Style Selector="DatePicker #PART_FlyoutButton:pressed /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{StaticResource BrushControlBgPressed}"/>
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource BrushSecondaryMain}"/>
-        </Style>
-
-        <Style Selector="DatePicker /template/ Button#PART_FlyoutButton TextBlock">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-            <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
-        </Style>
-
-        <Style Selector="TextBlock#Label1">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-        </Style>
-
-
-        <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton">
-            <Setter Property="Foreground" Value="{StaticResource BrushAcceptButtonIcon}" />
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <Border Background="{TemplateBinding Background}">
-                        <Path Data="M 0,5.5 L 4,9.5 L 12,0.5"
-                              Stretch="None"
-                              Stroke="{TemplateBinding Foreground}"
-                              StrokeLineCap="Round"
-                              StrokeThickness="3"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center" />
-                    </Border>
-                </ControlTemplate>
-            </Setter>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton">
-            <Setter Property="Foreground" Value="{StaticResource BrushDismissButtonIcon}" />
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <Border Background="{TemplateBinding Background}">
-                        <Path Data="M 1.5,0.5 L 11.5,10.5 M 11.5,0.5 L 1.5,10.5"
-                              Stretch="None"
-                              Stroke="{TemplateBinding Foreground}"
-                              StrokeLineCap="Round"
-                              StrokeThickness="3"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center" />
-                    </Border>
-                </ControlTemplate>
-            </Setter>
-        </Style>
-
-
-
-        <Style Selector="DatePickerPresenter #PART_MonthSelector ListBoxItem">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-            <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter #PART_MonthSelector ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextDark}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter #PART_MonthSelector ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextDark}"/>
-        </Style>
-
-        
-
-        <Style Selector="DatePickerPresenter #PART_DaySelector ListBoxItem">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-            <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter #PART_DaySelector ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextDark}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter #PART_DaySelector ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextDark}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter #PART_YearSelector ListBoxItem">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-            <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter #PART_YearSelector ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextDark}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter #PART_YearSelector ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextDark}"/>
-        </Style>
-
-        <!--DATE PICKER UP DOWN BUTTONS-->
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton,
-                         DatePickerPresenter /template/ RepeatButton#PART_DayUpButton,
-                         DatePickerPresenter /template/ RepeatButton#PART_YearUpButton">
-            <Setter Property="Background" Value="{StaticResource BrushArrowButtonMain}" />
-            <Setter Property="Foreground" Value="{StaticResource BrushArrowButtonIcon}" />
-            
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <Border Background="{TemplateBinding Background}">
-                        <Path Data="M -0.5,7.5 L 5.5,1.5 L 11.5,7.5"
-                              Stretch="None"
-                              Stroke="{TemplateBinding Foreground}"
-                              StrokeLineCap="Round"
-                              StrokeThickness="3"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center" />
-                    </Border>
-                </ControlTemplate>
-            </Setter>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton,
-                         DatePickerPresenter /template/ RepeatButton#PART_DayDownButton,
-                         DatePickerPresenter /template/ RepeatButton#PART_YearDownButton">
-            <Setter Property="Background" Value="{StaticResource BrushArrowButtonMain}" />
-            <Setter Property="Foreground" Value="{StaticResource BrushArrowButtonIcon}" />
-            
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <Border Background="{TemplateBinding Background}">
-                        <Path Data="M -0.5,0.5 L 5.5,6.5 L 11.5,0.5"
-                              Stretch="None"
-                              Stroke="{TemplateBinding Foreground}"
-                              StrokeLineCap="Round"
-                              StrokeThickness="3"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center" />
-                    </Border>
-                </ControlTemplate>
-            </Setter>
-        </Style>
-
-
-
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton:not(:ispointerover)">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton:pressed">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
-        </Style>
-
-
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton:not(:ispointerover)">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton:pressed">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
-        </Style>
-
-
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayUpButton">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayUpButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayUpButton:pressed">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
-        </Style>
-
-        
-        
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayDownButton">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayDownButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayDownButton:pressed">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
-        </Style>
-
-
-
-      
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearUpButton">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearUpButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearUpButton:pressed">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
-        </Style>
-
-        
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearDownButton">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearDownButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearDownButton:pressed">
-            <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
-        </Style>
-
-
-
-
-
-
-        <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton">
-            <Setter Property="Background" Value="{StaticResource AcceptButtonMain}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource AcceptButtonHover}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton:pressed">
-            <Setter Property="Background" Value="{StaticResource AcceptButtonPressed}"/>
-        </Style>
-
-
-        <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton">
-            <Setter Property="Background" Value="{StaticResource DismissButtonMain}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton:pointerover">
-            <Setter Property="Background" Value="{StaticResource DismissButtonHover}"/>
-        </Style>
-
-        <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton:pressed">
-            <Setter Property="Background" Value="{StaticResource DismissButtonPressed}"/>
-        </Style>
-
-        <!--SCROLL BAR THUMB-->
-
-        <Style Selector="ScrollBar:not(:pointerover) /template/ Track > Thumb /template/ Border">
-            <Setter Property="Background" Value="{StaticResource BrushSecondaryMain}" />
-        </Style>
-
-        <Style Selector="ScrollBar:pointerover /template/ Track > Thumb /template/ Border">
-            <Setter Property="Background" Value="{StaticResource BrushSecondaryMain}" />
-        </Style>
-
-        <Style Selector="ScrollBar /template/ Track > Thumb:pointerover /template/ Border">
-            <Setter Property="Background" Value="{StaticResource BrushSecondaryHover}" />
-        </Style>
-
-        <Style Selector="ScrollBar /template/ Track > Thumb:pressed /template/ Border">
-            <Setter Property="Background" Value="{StaticResource BrushSecondaryPressed}" />
-        </Style>
-
-        
-
+        <StyleInclude Source="avares://TMGSSaveEditor.Core/CoreStyles.axaml" />
     </Application.Styles>
 </Application>
