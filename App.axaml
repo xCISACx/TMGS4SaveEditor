@@ -6,11 +6,11 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <Color x:Key="ColorTextMain">#333333</Color>
+            <Color x:Key="ColorTextMain">#4a4a4a</Color>
             <Color x:Key="ColorTextDark">#111111</Color>
             <Color x:Key="ColorWhite">#FFFFFF</Color>
             <Color x:Key="ColorAppBackground">#fff3ce</Color>
-            <Color x:Key="ColorAppTextOnBackground">#846438</Color>
+            <Color x:Key="ColorAppTextOnBackground">#4a4a4a</Color>
 
             <Color x:Key="ColorControlBgHover">#FAFAFA</Color>
             <Color x:Key="ColorControlBgPressed">#E8E8E8</Color>
@@ -38,11 +38,14 @@
             <Color x:Key="ColorHighlightSelected">#d0d952</Color>
             <Color x:Key="ColorHighlightSelectedHover">#adcf3c</Color>
 
-            <Color x:Key="ColorBorderMain">#f18714</Color>
-            <Color x:Key="ColorBorderHover">#eb611d</Color>
-            <Color x:Key="ColorBorderPressed">#e34d12</Color>
+            <Color x:Key="ColorBorderMain">#f18714</Color> 
+            <Color x:Key="ColorBorderHover">#f18714</Color> <!--eb611d-->
+            <Color x:Key="ColorBorderPressed">#f18714</Color> <!--e34d12-->
 
             <Color x:Key="ColorLink">#eb611d</Color>
+
+            <Color x:Key="ColorTextSelectionBackground">#ffc59f</Color>
+            <Color x:Key="ColorTextSelectionForeground">#333333</Color>
 
             <!--DATE PICKER-->
 
@@ -62,6 +65,28 @@
             <Color x:Key="ArrowButtonHover">#f4b64a</Color>
             <Color x:Key="ArrowButtonPressed">#edad3c</Color>
             <Color x:Key="ArrowButtonIcon">#846438</Color>
+
+            <!--CHEAT MENU-->
+
+            <Color x:Key="GenCheatButtonMain">#ffcb6b</Color>
+            <Color x:Key="GenCheatButtonHover">#f4b64a</Color>
+            <Color x:Key="GenCheatButtonPressed">#edad3c</Color>
+            <Color x:Key="GenCheatButtonText">#846438</Color>
+
+            <Color x:Key="GuyCheatButtonMain">#d0d3ff</Color>
+            <Color x:Key="GuyCheatButtonHover">#b1c2fb</Color>
+            <Color x:Key="GuyCheatButtonPressed">#9db2ff</Color>
+            <Color x:Key="GuyCheatButtonText">#6b82ce</Color>
+
+            <Color x:Key="FriendCheatButtonMain">#ffd8e1</Color>
+            <Color x:Key="FriendCheatButtonHover">#ffc5de</Color>
+            <Color x:Key="FriendCheatButtonPressed">#feafd6</Color>
+            <Color x:Key="FriendCheatButtonText">#ff82de</Color>
+
+            <Color x:Key="OkButtonMain">#e4007f</Color>
+            <Color x:Key="OkButtonHover">#ca0260</Color>
+            <Color x:Key="OkButtonPressed">#b60145</Color>
+            <Color x:Key="OkButtonText">#bd6d18</Color>
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="avares://TMGSSaveEditor.Core/ThemeMappings.axaml"/>
